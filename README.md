@@ -24,7 +24,7 @@ Abaixo, um sumário dos métodos desenvolvidos
 - Ajuste polinomial ⏳
 
 ### Interpolação Polinomial
-- Definição (método) ⏳
+- Definição (método) ✓/
 - Polinômio de Lagrange ⏳
 - Polinômio de Newton ⏳
 
