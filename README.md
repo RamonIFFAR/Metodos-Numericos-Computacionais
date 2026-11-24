@@ -29,5 +29,5 @@ Abaixo, um sumário dos métodos desenvolvidos
 - Polinômio de Newton ✓
 
 ### Integração Numérica
-- Regra dos Trapézios ⏳
-- 1ª Regra de Simpson ⏳
+- Regra dos Trapézios ✓
+- 1ª Regra de Simpson ✓
