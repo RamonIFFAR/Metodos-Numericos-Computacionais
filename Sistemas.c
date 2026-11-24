@@ -7,6 +7,18 @@
 *       FERRAMENTAS
 */
 
+void printa_matriz_matricial(int n, double matriz[][n])
+{
+    for(int i = 0 ; i < n ; i++)
+    {
+        for(int j = 0 ; j < n ; j++)
+        {
+            printf("%f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 void printa_matriz(double* matriz, int tam)
 {
     for(int i = 0 ; i < tam ; i++)
@@ -389,21 +401,64 @@ double* InterpolPol(double* Xis, double* FXis, int tam)
 ************************************ Lagrange **************************************
 ************************************************************************************/
 
+void Lagrange_multiplicacaoPermutada(double* coeficientesPos, double* Xis, int n)
+{
+
+}
+
 void Lagrange_constroi(double* Xis, double* FXis, int n)
 {
-    bool resultado = 0.0;
-    for(int i = 0 ; i < n ; i++)
-    {
-        for(int j = 0 ; j < n ; j++)
-        {
-            
-        }
-    }
+    
 }
 
 void Lagrange(double* Xis, double* FXis, int n)
 {
 
+}
+
+/***********************************************************************************
+************************************* Newton ***************************************
+************************************************************************************/
+
+void Newton_defineCoeficientes(double* Xis, double* FXis, int n, double coeficientes[][n])
+{
+    for(int i = 0 ; i < n ; i++)
+    {
+        coeficientes[i][0] = FXis[i];
+    }
+
+    // Sendo n a quantidade de pontos, Xis o vetor contendo os pontos X e coeficientes a matriz contendo as diferenças divididas
+    for(int i = 1 ; i < n ; i++) // Percorre as colunas
+    {
+        for(int j = 0 ; j < n - i ; j++) // Percorre as linhas
+        {
+            coeficientes[j][i] = (coeficientes[j+1][i-1] - coeficientes[j][i-1]) / (Xis[j+i] - Xis[j]);
+        }
+    }
+}
+
+void Newton_printaFuncao(double* Xis, int n, double coeficientes[][n])
+{
+    for(int i = 0 ; i < n ; i++)
+    {
+        printf("%f", coeficientes[0][i]);
+        for(int j = 0 ; j < i ; j++)
+        {
+            printf("(x - %f)", Xis[j]);
+        }
+        if(i != n-1)
+        {
+            printf(" + ");
+        }
+    }
+}
+
+void Newton(double* Xis, double* FXis, int n)
+{
+    double Diferencas[n][n]; // Referente aos coeficientes das diferenças divididas
+    Newton_defineCoeficientes(Xis, FXis, n, Diferencas);
+    Newton_printaFuncao(Xis, n, Diferencas);
+    //printa_matriz_matricial(n, Diferencas);
 }
 
 int main(int argc, char** argv)
@@ -445,6 +500,10 @@ int main(int argc, char** argv)
     printa_lista(VetX, tam);
     /**/
 
-    resposta = InterpolPol(Xis, FXis, 3);
-    printa_lista(resposta, 3);
+    //resposta = InterpolPol(Xis, FXis, 3);
+    //printa_lista(resposta, 3);
+
+    double pontosX[3] = {1,2,3};
+    double pontosF[3] = {2,5,10};
+    Newton(pontosX, pontosF, 3);
 }
