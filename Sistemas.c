@@ -461,6 +461,41 @@ void Newton(double* Xis, double* FXis, int n)
     //printa_matriz_matricial(n, Diferencas);
 }
 
+/***********************************************************************************
+************************************ Trapézios *************************************
+************************************************************************************/
+
+double Trapezios(double* Xis, double* FXis, int n)
+{
+    double area = 0.0;
+    for(int i = 0 ; i < n-1 ; i++)
+    {
+        area += (FXis[i] + FXis[i+1]) / 2 * (Xis[i+1] - Xis[i]);
+    }
+    return area;
+}
+
+/***********************************************************************************
+************************************* Simpson **************************************
+************************************************************************************/
+
+double Simpson(double* Xis, double* FXis, int n)
+{
+    double step = Xis[1] - Xis[0];
+    double sum = 0.0;
+    int i = 0;
+    while(i+2 < n)
+    {
+        sum += (FXis[i] + FXis[i+1] * 4 + FXis[i+2]) * step / 3;
+        i += 2;
+    }
+    if(i != n-1)
+    {
+        sum += Trapezios(Xis+i, FXis+i, 2);
+    }
+    return sum;
+}
+
 int main(int argc, char** argv)
 {
     int grau = 2;
@@ -503,7 +538,33 @@ int main(int argc, char** argv)
     //resposta = InterpolPol(Xis, FXis, 3);
     //printa_lista(resposta, 3);
 
+    /* Newton */
+    /**
     double pontosX[3] = {1,2,3};
     double pontosF[3] = {2,5,10};
     Newton(pontosX, pontosF, 3);
+    /**/
+
+    /* Trapézios */
+    /**
+    int tam = 5;
+    double TPontos[5] = {0,1,2,3,4};
+    double TRes[5] = {3,5,4,8,6};
+    printf("Resultado: %f", Trapezios(TPontos, TRes, tam));
+    /**/
+
+    /* Simpson */
+    /**/
+    double lista1[3] = {0,1,2};
+    double resposta1[3] = {2, 4, 8};
+    printf("Teste 1: %f\n\n", Simpson(lista1, resposta1, 3));
+
+    double lista2[6] = {0, 2, 4, 6, 8, 10};
+    double resposta2[6] = {3,5,9,10,14,15};
+    printf("Teste 2: %f\n\n", Simpson(lista2, resposta2, 6));
+
+    double lista3[8] = {1,2,3,4,5,6,7,8};
+    double resposta3[8] = {4,7,9,12,10,14,16,19};
+    printf("Teste 3: %f\n\n", Simpson(lista3, resposta3, 8));
+    /**/
 }
