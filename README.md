@@ -26,7 +26,7 @@ Abaixo, um sumário dos métodos desenvolvidos
 ### Interpolação Polinomial
 - Definição (método) ✓/
 - Polinômio de Lagrange ⏳
-- Polinômio de Newton ⏳
+- Polinômio de Newton ✓
 
 ### Integração Numérica
 - Regra dos Trapézios ⏳
