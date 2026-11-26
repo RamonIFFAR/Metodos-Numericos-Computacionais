@@ -16,16 +16,16 @@ Abaixo, um sumário dos métodos desenvolvidos
 
 ### Sistemas Lineares
 - Eliminação de Gauss ✓
-- Fatoração LU ✓
+- Fatoração LU ✓/
 - Gauss-Jacobi iterativo ✓
 - Gauss-Seidel iterativo ✓ 
 
 ### Ajuste de curvas
-- Ajuste polinomial ⏳
+- Ajuste polinomial ✓
 
 ### Interpolação Polinomial
-- Definição (método) ✓/
-- Polinômio de Lagrange ⏳
+- Definição (método) ✓
+- Polinômio de Lagrange ✓
 - Polinômio de Newton ✓
 
 ### Integração Numérica
